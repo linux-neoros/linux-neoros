@@ -1,3 +1,5 @@
+set -e 
+
 echo "Dist root: ${DIST_ROOT:?}"
 echo "LFS: ${LFS:?}"
 echo "Creating building environment..."
@@ -8,3 +10,7 @@ if ! test $(whoami) == "distro-neoros" ; then
 fi
 
 echo "Creating building environment..."
+cd $DIST_ROOT/build_env
+
+bash -e build_scripts/binutils-pass-1.sh
+bash -e build_scripts/gcc-pass-1.sh
